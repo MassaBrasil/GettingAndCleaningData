@@ -45,6 +45,10 @@ one_data contains the result of all bindings and ready to execution of fifth ste
 this step consist on grouping (like 'squeezing') one_data rows by subjectID and activityName, and applying ColMeans function for all other columns (i.e., those '-mean()' and '-std()' measure columns ), and result is generated into avg_one_data. 
 all columns names remain the same.
 
+the function to achieve this grouping feature is ddply() .
+it takes one_data, group rows by subjectID and activityName variables, and applies function colMeans for one_data columns from 3rd to 68th. 
+
+avg_one_data <- ddply(one_data, .(subjectID, activityName), function(x) colMeans(x[, 3:68]))
+
 and finally, the avg_one_data is written into archive named 'avg_one_data.txt'.
 it is also uploaded in the repo.
-
